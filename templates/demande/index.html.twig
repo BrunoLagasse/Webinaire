@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des demandes{% endblock %}
+
+{% block body %}
+    <h1 class="m-3 fs-2 text-center">Liste des demandes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID de la demande</th>
+                <th>Demandeur</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demande in demandes %}
+            <tr>
+                <td>{{ demande.id }}</td>
+                {% for demandeur in demandeurs %}
+                    <td>{{ demandeur.lastname ~'\n'~ demandeur.firstname }}
+                {% endfor %}</td>
+                <td>{{ demande.date ? demande.date|date('d-m-Y à H:i') : '' }}</td>
+                <td>
+                    <a href="{{ path('demande_show', {'id': demande.id}) }}" class="btn btn-primary">Détails</a>
+                    <a href="{{ path('demande_edit', {'id': demande.id}) }}" class="btn btn-success ml-3">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Pas de demande en cours</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('demande_new') }}" class="btn btn-primary">Créer une nouvelle demande</a>
+{% endblock %}

@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* css link-modal admin panel*/
+
+.overlink:hover {
+    color:darkblue;
+}
+
+/* Home-button */
+.img-home{
+    height: 100%;
+    width: 4rem;
+}
+
+/* text pour fiare descendre la marge de la navbar*/
+.invisible {
+    opacity: 0;
+}
+
+/* Dissimulation des champs du formulaire de demande */
+.hidden-row {
+    display: none;
+}
+#demande_obj_requested{
+    display: none;
+}

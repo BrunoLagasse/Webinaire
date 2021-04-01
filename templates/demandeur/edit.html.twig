@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition d'un demandeur{% endblock %}
+
+{% block body %}
+    <h1 class="fs-2 text-center mt-2">Edition du Demandeur</h1>
+
+    {{ include('demandeur/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('demandeur_index') }}" class="btn btn-primary m-1">Retour à la liste</a>
+
+    {{ include('demandeur/_delete_form.html.twig') }}
+{% endblock %}

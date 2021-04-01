@@ -1,0 +1,59 @@
+<div class="text-center">
+<a href="{{path('obj_index')}}"><img class='img-home mt-4' src="{{asset('build/images/home.png')}}"/></a>
+</div>
+<footer id="site-footer" class="padding_half">
+    <div class="container">
+       <div class="row">
+        {% if app.user %}
+           <!-- Modal -->
+           <!-- Button trigger modal -->
+           <div style="text-align: center;">
+             <button type="button" style="text-align: center;width: 40%;margin:4rem;"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Admin panel</button>
+           </div>
+           <!-- Modal -->
+           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog">
+               <div class="modal-content">
+                 <div class="modal-header">
+                   <h5 class="d-flex row justify-content-center" id="exampleModalLabel">Panel administrateur</h5>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <div class="d-flex flex-column align-items-center">
+                   <a class="p-2 overlink" href="{{ path('demandeur_index') }}">Liste des demandeurs</a>
+                   <a class="p-2 overlink" href="{{ path('demande_index') }}">Liste des demandes</a>
+                 </div>
+                 <div class="modal-footer">
+                   <button type="button" class="btn btn-primary">Continuer</button>
+                 </div>
+               </div>
+             </div>
+           </div>
+           {% endif %}
+          <div class="col-md-12 col-sm-12 text-center">
+             <ul class="social-icons small bottom25 wow fadeInUp" data-wow-delay="300ms">
+               <li>
+                 <a href="https://www.linkedin.com/company/alain-renault-communication/" target="_blank">
+                  <img src="https://www.alainrenault.com/assets/images/linkedin.png" alt="Linkedin Alain Renault Communication" width="60%"/>
+                 </a> 
+               </li>
+               <li>
+                 <a href="https://anchor.fm/ondepositive/" target="_blank">
+                   <img src="https://www.alainrenault.com/assets/images/anchor.png" alt="Anchor Alain Renault Communication"width="60%"/>
+                 </a>
+               </li>
+               <li>
+                 <a href="https://twitter.com/alainrenaultcom?lang=fr" target="_blank">
+                   <img src="https://www.alainrenault.com/assets/images/twitter.png" alt="Twitter Alain Renault Communication" width="60%"/>
+                 </a>
+               </li>
+               <li>
+                 <a href="https://fr-fr.facebook.com/pages/category/Education/Alain-Renault-Communication-103610119791462/" target="_blank">
+                   <img src="https://www.alainrenault.com/assets/images/facebook.png" alt="Facebook Alain Renault Communication" width="60%"/>
+                 </a>
+               </li>
+               </ul>
+             <p class="copyrights wow fadeInUp" data-wow-delay="400ms"> &copy; 2021 ARC. Tous droits réservés - <a href="https://www.alainrenault.com/Accueil/mentions" class="thickbox_bis">Mentions légales</a>  </p>
+          </div>
+       </div>
+    </div>
+ </footer> 

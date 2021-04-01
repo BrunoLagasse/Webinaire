@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer cette demande{% endblock %}
+
+{% block body %}
+    <h1>Editer cette Demande</h1>
+
+    {{ include('demande/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('demande_index') }}" class="btn btn-primary m-1">Retour à la liste</a>
+
+    {{ include('demande/_delete_form.html.twig') }}
+{% endblock %}

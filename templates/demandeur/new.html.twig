@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau demandeur{% endblock %}
+
+{% block body %}
+    <h1 class="text-center fs-2 m-2">Ajouter un nouveau demandeur</h1>
+
+    {{ include('demandeur/_form.html.twig') }}
+    {% if app.user %}
+    <a class="btn btn-primary m-1" href="{{ path('demandeur_index') }}">Retour à la liste</a>
+    {% endif %}
+{% endblock %}

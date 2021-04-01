@@ -1,0 +1,24 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+<div class="getin_form wow fadeInUp col-6">
+{{ form_start(form) }}
+    <!-- champs formulaire auto select webinaire id -->
+    {{ form_widget(form.obj_requested, {value: obj.id ~ "", class:'hidden-row', label: false }) }} 
+    <!-- champs importés de l'entité "Demandeur" -->
+    {{ form_row(form.person_asking.lastname, {'class': 'form-control'}) }}  
+    {{ form_row(form.person_asking.firstname, {'class': 'form-control'}) }}  
+    {{ form_row(form.person_asking.email, {'class': 'form-control'}) }}  
+    {{ form_row(form.person_asking.phone_number, {'class': 'form-control'}) }}  
+    {{ form_row(form.person_asking.company, {'class': 'form-control'}) }}  
+    <!-- dissimulation du champs "date" -->
+    {% if form.date == true %}
+        {{ form_row(form.date, { 'attr': {'class': 'hidden-row'}, 'label': false} ) }}
+    {% else %}
+        {{ form_row(form.date , { 'attr': {'class': 'hidden-row'}, 'label': false} ) }}
+    {% endif %}
+    <button class="btn btn-primary m-1">{{ button_label|default('Faire votre demande') }}</button>
+    {% if app.user %}
+    <a class="btn btn-primary ml-1" href="{{ path('demandeur_index') }}">Retour à la liste</a>
+    {% endif %}
+{{ form_end(form) }} 
+</div>
+

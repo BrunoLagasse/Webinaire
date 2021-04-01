@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du Demandeur{% endblock %}
+
+{% block body %}
+    <h1>Détail du Demandeur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ demandeur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom de famille</th>
+                <td>{{ demandeur.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ demandeur.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ demandeur.email }}</td>
+            </tr>
+            <tr>
+                <th>Numéro de téléphone</th>
+                <td>{{ demandeur.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Entreprise</th>
+                <td>{{ demandeur.company }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('demandeur_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+    <a href="{{ path('demandeur_edit', {'id': demandeur.id}) }}" class="btn btn-success m-2">Éditer</a>
+
+    {{ include('demandeur/_delete_form.html.twig') }}
+{% endblock %}

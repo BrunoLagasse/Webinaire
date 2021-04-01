@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un nouveau webinaire{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Créer un nouveau webinaire</h1>
+
+    {{ include('obj/_form.html.twig') }}
+    {% if app.user %}
+    <a class="btn btn-primary m-1" href="{{ path('obj_index') }}">Retour à la liste</a>
+    {% endif %}
+{% endblock %}

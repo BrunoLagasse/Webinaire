@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des webinaires{% endblock %}
+
+{% block body %}
+    <h1 class="display-1 text-center fs-2 mt-2" style="margin-bottom:3rem;">Liste des webinaires</h1>
+    <div class="container">
+      <div class="row">
+        {% for obj in objs %}
+        <div class="col-6">
+              <div class="col-12">
+                  <a href="{{ path('obj_show', {'id': obj.id}) }}"><img src="{{ asset('build/images/webinaire_placeholder.jpg') }}" class="card-img-top" alt="image-du-webinaire"/></a>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ obj.name }}</h5>
+                    <p class="card-text">{{ obj.summarize }}</p>
+                    <a href="{{path('obj_show', {'id': obj.id}) }}" class="btn btn-primary">Plus de détails</a>
+                    {% if app.user %}
+                    <a href="{{ path('obj_edit', {'id': obj.id}) }}" class="btn btn-success">Éditer</a>
+                    {% endif %}
+                  </div>
+                </div>
+        </div>
+        {% else %}
+        </div>}
+        <p>
+          Pas de webinaire trouvé...
+        </p>
+        {% endfor %}
+    </div>
+    <hr>
+    {% if app.user %}
+    <div class="d-flex justify-content-center">
+        <a class="mb-2 overlink" href="{{ path('obj_new') }}">Ajouter un webinaire</a>
+    </div>
+    {% endif %}
+{% endblock %}

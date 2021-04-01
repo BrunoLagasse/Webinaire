@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des demandeurs{% endblock %}
+
+{% block body %}
+    <h1 class="text-center fs-2">Liste des demandeurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom de famille</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Numéro de téléphone</th>
+                <th>Entreprise</th>
+                <th>Demande</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        {% for demandeur in demandeurs %}
+            <tr>
+                <td>{{ demandeur.id }}</td>
+                <td>{{ demandeur.lastname }}</td>
+                <td>{{ demandeur.firstname }}</td>
+                <td>{{ demandeur.email }}</td>
+                <td>{{ demandeur.phoneNumber }}</td>
+                <td>{{ demandeur.company }}</td>
+                {% for demande in demandeur.demandes %}
+                <td>{{ demande.date|date('d-m-Y') }} -
+                {% endfor %} 
+                {% for webinaire in obj_requested %}
+                {{ webinaire.name }}<br></td>
+                {% endfor %}
+
+                <td>
+                    <a href="{{ path('demandeur_show', {'id': demandeur.id}) }}" class="btn btn-primary">Détail</a>
+                    <a href="{{ path('demandeur_edit', {'id': demandeur.id}) }}" class="btn btn-success ml-3">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun demandeur trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('demandeur_new') }}">Ajouter un nouveau demandeur</a>
+    
+{% endblock %}
