@@ -3,29 +3,66 @@
 {% block title %}Webinaire{% endblock %}
 
 {% block body %}
-    <h1 class="text-center m-4">{{ obj.name }}</h1>
-    <div class="contenair-fluid">
-    <div class="row justify-content-around">
-        <div class="col">
-            <img src="{{ asset('build/images/webinaire_placeholder.jpg') }}" class="col" alt="image-du-webinaire"/>
-            <div class="card-body">
-              <h5 class="card-title">{{ obj.name }}</h5>
-              <p>Idenditifiant du webinaire: {{ obj.id }}</p>
-              <p class="card-text fs-2 text-wrap">{{ obj.summarize }}
-              </p>
-            </div>
-            <a href="{{ path('obj_index') }}" class="btn btn-primary">Retour à la liste</a>
-            {% if app.user %}
-            <a href="{{ path('obj_edit', {'id': obj.id}) }}" class="btn btn-success">Éditer</a>
-        
-            {{ include('obj/_delete_form.html.twig') }}
-            {% endif %}
+{# Admin Panel Nav Bar #}
+{#
+{% if app.user %}
+    <!-- Modal -->
+    <!-- Button trigger modal -->
+    <div style="text-align: center;">
+    <button type="button" style="text-align: center;width: 40%;margin:4rem;"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Admin panel</button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="d-flex row justify-content-center" id="exampleModalLabel">Panel administrateur</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-
-        <div class="col">
-            {% embed "demande/new.html.twig" %}
-            {% endembed %}
+        <div class="d-flex flex-column align-items-center">
+            <a class="p-2 overlink" href="{{ path('demandeur_index') }}">Liste des demandeurs</a>
+            <a class="p-2 overlink" href="{{ path('demande_index') }}">Liste des demandes</a>
+            <a class="p-2 overlink" href="{{ path('statistic_index') }}">Statistiques</a>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Continuer</button>
+        </div>
         </div>
     </div>
+    </div>
+    {% endif %}#}
+    {# Fin Admin Panel #}
+    {# <h1 class="text-center fs-1 m-4">{{ obj.name }}{% embed "statistic/show.html.twig" %}{% endembed %}</h1> #}
+    <div class="contenair mt-5">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+                <img src="{{ asset('build/images/webinaire_placeholder.jpg') }}" class="img-thumbnail" alt="image-du-webinaire"/>
+            {# début bouton d'administration #}
+            {% if app.user %}
+            <div class="dropdown pull-right">
+                <button style="height: auto; width: auto; padding: 0;" type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Dropdown</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="ml-1 btn btn-success" href="{{ path('obj_edit', {'id': obj.id}) }}">Éditer</a>
+                {{ include('obj/_delete_form.html.twig') }}
+                </div>
+            </div>
+            {% endif %}
+            {# fin bouton d'administration  #}
+            <div class="card-body">
+                <h5 class="card-title titre-webiniaire text-warning display-6 font-weight-bold">{{ obj.name }}{% embed "statistic/show.html.twig" %}{% endembed %}</h5>
+                <p class="card-text fs-6 text-wrap">{{ obj.summarize }}</p>
+            </div>
+            {# <a href="{{ path('obj_index') }}" class="back-to-list btn btn-primary">Retour à la liste</a> #}
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 formulaire">
+                {% embed "demande/new.html.twig" %}
+                {% endembed %}
+            </div>
+            <div class="col"></div>
+        </div>
     </div>
 {% endblock %}

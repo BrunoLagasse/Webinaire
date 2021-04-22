@@ -3,6 +3,12 @@ body {
     padding: 0;
 }
 
+/*  flèche retour vers la liste des webinaires */
+.back-arrow{
+    height: 4vh;
+    width: auto;
+}
+
 /* css link-modal admin panel*/
 
 .overlink:hover {
@@ -15,7 +21,7 @@ body {
     width: 4rem;
 }
 
-/* text pour fiare descendre la marge de la navbar*/
+/* text pour fairere descendre la marge de la navbar*/
 .invisible {
     opacity: 0;
 }
@@ -27,3 +33,169 @@ body {
 #demande_obj_requested{
     display: none;
 }
+
+/* index demandeur */
+.resend-email-img {
+    height: 1.4vh;
+    width: auto;
+}
+
+/* Webinaire Index */
+.items{
+    background: #FFFFFF;  
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 27px;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+/* Webinaire SHOW */
+
+.img-webinaire-show {
+    height: 4vh;
+    width: auto;
+}
+
+.submit-btn-webinar-show {
+    color: white;
+    width: auto;
+    float: right;
+    font-size: 1rem;
+    border-radius: 40px;
+    text-align: center;
+    padding: 10px;
+    background: linear-gradient(45deg, #16d0e1 0, #00b3cf 100%);
+    font-family: 'Montserrat', sans-serif;
+    }
+
+/* Miniature des statistique près du titre */
+.statistic-view{
+    font-size: 1rem;
+    padding: 0.6rem;
+    color: white;
+    width: auto;
+    height: 2vh;
+    margin: 0;
+    border-radius: 50%;
+    position: relative;
+    background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
+}
+
+/* desktop */ 
+@media screen and (min-width: 1200px) {
+    .webinaire-show img {
+        min-height: 45%;
+        width: 60%;
+    }
+    .webinaire-show{
+        height: 80vh;
+        width: 100%;
+        margin: 0vh 2vh 0vh 5vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .back-to-list{
+        width: 20%;
+    }
+  }
+/* portable */
+  @media screen and (max-width: 641px) {
+    .fullcontenair{
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        margin-bottom: 10vh;
+        width: 100vw;
+    }
+    .titre-webiniaire{
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .webinaire-show-content{
+        text-align: center;
+        margin-right: 20% !important;
+    }
+
+    .webinaire-show{
+        margin: auto;
+    }
+    .formulaire {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .formulaire-content {
+        display: block;
+        text-align: center;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+    .back-to-list{
+        margin-left: 3%;
+        margin-right: 3%;
+        text-align: center;
+    }
+    .headerARC{
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .header-webinaire{
+        width: 100%;
+    }
+    .submit-btn-webinar-show {
+        color: white;
+        width: auto;
+        float: right;
+        font-size: 1rem;
+        border-radius: 40px;
+        text-align: center;
+        padding: 10px;
+        background: linear-gradient(45deg, #16d0e1 0, #00b3cf 100%);
+        font-family: 'Montserrat', sans-serif;
+        }
+  }
+
+  /* tablette */
+  @media screen and (max-width: 720px) {
+
+    .webinaire-show-fullcontenair {
+        display: flex !important;
+        flex-direction: column;
+        height: 70vh;
+    }
+
+    .webinaire-show{
+        min-width: 100%;
+        margin-bottom: 10%;
+    }
+    .formulaire {
+        min-width: 100%;
+        margin: 12%;
+    }
+    .back-to-list{
+        margin-left: 3%;
+        margin-right: 3%;
+        text-align: center;
+    }
+    .headerARC{
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .header-webinaire{
+        width: 100%;
+    }
+        .submit-btn-webinar-show {
+            color: white;
+            width: auto;
+            float: right;
+            font-size: 1rem;
+            border-radius: 40px;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(45deg, #16d0e1 0, #00b3cf 100%);
+            font-family: 'Montserrat', sans-serif;
+        }
+  }

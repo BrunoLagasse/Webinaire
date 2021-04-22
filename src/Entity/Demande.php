@@ -35,12 +35,6 @@ class Demande
      * @ORM\JoinColumn(nullable=false)
      */
     private $obj_requested;
-
-    /**
-     * @Assert\Type(type="App\Entity\Demandeur")
-     * @Assert\Valid
-     */
-    protected $demandeur;
     
     public function __construct()
     {

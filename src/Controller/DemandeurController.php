@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Demandeur;
 use App\Entity\Obj;
+use App\Entity\Demande;
 use App\Form\DemandeurType;
 use App\Repository\DemandeRepository;
 use App\Repository\DemandeurRepository;
@@ -18,26 +19,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class DemandeurController extends AbstractController
 {
     #[Route('/', name: 'demandeur_index', methods: ['GET', 'POST'])]
-    public function index(DemandeurRepository $demandeurRepository, ObjRepository $objRepository, DemandeRepository $demandeRepository, $email): Response
+    public function index(DemandeurRepository $demandeurRepository, ObjRepository $objRepository, DemandeRepository $demandeRepository): Response
     {
-        // $demandeurRepository = $this->getDoctrine()->getRepository(Demandeur::class);
-        // $demandeur = $demandeurRepository->find($id);
-        // dd($demandeur);
-
-
-        // $existingEmail = $this->getDoctrine()
-        //     ->getRepository(Demandeur::class)
-        //     ->nom($email);
-
-        // dd($existingEmail);
-            $email = $demandeurRepository->getId($email);
-
-            return $this->render('demandeur/index.html.twig', [
-                'demandeurs' => $email,
-                'obj_requested' => $objRepository->findAll(),
-                'demande'=> $demandeRepository->findAll(),
-
-            ]);
+             return $this->render('demandeur/index.html.twig', [
+                    'demandeurs' => $demandeurRepository->findAll(),
+                    'demande'=> $demandeurRepository->findAll(),
+                ]);
     }
 
     #[Route('/new', name: 'demandeur_new', methods: ['GET', 'POST'])]

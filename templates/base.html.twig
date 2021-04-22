@@ -5,20 +5,25 @@
         <title>{% block title %}Bienvenue!{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap -->
+  {# <!-- jQuery  Popper.js Bootstrap JS --> #}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  {# fin de JS  #}
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
         {# début copie site ARC #}
         <link rel="stylesheet" href="https://www.alainrenault.com/assets/css/plugins.css">
         <link rel="stylesheet" href="https://www.alainrenault.com/assets/css/bootstrap.min.css">
         <!--Custom Styles-->
-        <!--<link rel="stylesheet" href="https://www.alainrenault.com/assets/css/animate.css">-->
+        <link rel="stylesheet" href="https://www.alainrenault.com/assets/css/animate.css">
         <link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/style.css">
         <link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/client.css">
-        <!--<link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/gen.css">-->
+        <link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/gen.css">
         <link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/bg-color.css">
-        <!-- <link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/slider.css"> -->
-        <!-- <link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/respons.css"> -->
-        <!-- <link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/modalAuto.css"> -->
+        <link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/slider.css">
+        <link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/respons.css">
+        {# <link rel="stylesheet"  href="https://www.alainrenault.com/assets/css/modalAuto.css"> #}
         <link rel="stylesheet" type="text/css" href="https://www.alainrenault.com/assets/css/cookieconsent.min.css"/>
         <script defer src="https://www.alainrenault.com/assets/js/cookieconsent.min.js"></script>
         <script>
@@ -67,7 +72,7 @@
         {% endblock %}
 
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>

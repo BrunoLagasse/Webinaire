@@ -30,17 +30,17 @@ class DemandeurRepository extends ServiceEntityRepository
     //         ->getQuery()->getResult();
     // }
 
-    public function getDemandeurByEmail($id){
-        $demandeur = $this->getDoctrine()
-                    ->getRepository('Demandeur')
-                    ->findByEmail('email');
-    }
+    // public function getDemandeurByEmail($id){
+    //     $demandeur = $this->getDoctrine()
+    //                 ->getRepository('Demandeur')
+    //                 ->findByEmail('email');
+    // }
 
-    public function findExistingEmail()
-    {
-         return $this->getEntityManager()
-                 ->createQuery('SELECT d FROM Demandeur:Email d ORDER BY d.date ASC')->getResult();
-    }
+    // public function findExistingEmail()
+    // {
+    //      return $this->getEntityManager()
+    //              ->createQuery('SELECT d FROM Demandeur:Email d ORDER BY d.date ASC')->getResult();
+    // }
 
     // public function nom()
     // {
@@ -52,51 +52,51 @@ class DemandeurRepository extends ServiceEntityRepository
     //         return $queryBuilder->getQuery()->getResult();
     // }
 
-    public function nom(string $email)
-    {
-        $entityManager = $this->getEntityManager();
+    // public function nom(string $email)
+    // {
+    //     $entityManager = $this->getEntityManager();
 
-        $query = $entityManager->createQuery(
-            'SELECT d.id
-            FROM App\Entity\Demandeur d
-            WHERE d.email = :email'
-        )->setParameter('email', $email);
+    //     $query = $entityManager->createQuery(
+    //         'SELECT d.id
+    //         FROM App\Entity\Demandeur d
+    //         WHERE d.email = :email'
+    //     )->setParameter('email', $email);
 
-        // returns an array of Product objects
-        return $query->getResult();
-    }
+    //     // returns an array of Product objects
+    //     return $query->getResult();
+    // }
 
 
-    public function findEmail($email)
-    {
-        $email = "$email";
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.email = :email')
-            ->setParameter('email', $email)
-            ->orderBy('d.id', 'ASC')
-            ->getQuery()
-            ->getResult();
-    }
+    // public function findEmail($email)
+    // {
+    //     $email = "$email";
+    //     return $this->createQueryBuilder('d')
+    //         ->andWhere('d.email = :email')
+    //         ->setParameter('email', $email)
+    //         ->orderBy('d.id', 'ASC')
+    //         ->getQuery()
+    //         ->getResult();
+    // }
 
-    public function getId($email) {
-        $query = $this->createQueryBuilder('d')
-                      ->where('d.email > 1')
-                      ->setParameter('email', $email)
-                      ->getQuery();
+    // public function getId($email) {
+    //     $query = $this->createQueryBuilder('d')
+    //                   ->where('d.email > 1')
+    //                   ->setParameter('email', $email)
+    //                   ->getQuery();
                     
-        return $query->getResult();
-    }
+    //     return $query->getResult();
+    // }
 
-    public function findDemandeurId() {
-        return $this->createQueryBuilder('d') // d pour "demandeur"
-            ->andWhere('d.email = :email') // on défini le paramètre de requête
-            ->setParameter('email', 'd') // on défini le paramètre dynamique
-            ->orderBy('d.lastname', 'ASC') // On défini ici l'ordre de tri
-            ->setMaxResults(10) // Récupération de 10 élément maximum
-            ->getQuery() // Récupération de la query
-            ->getResult() // Récupération du résultat de la query
-            ;
-    }
+    // public function findDemandeurId() {
+    //     return $this->createQueryBuilder('d') // d pour "demandeur"
+    //         ->andWhere('d.email = :email') // on défini le paramètre de requête
+    //         ->setParameter('email', 'd') // on défini le paramètre dynamique
+    //         ->orderBy('d.lastname', 'ASC') // On défini ici l'ordre de tri
+    //         ->setMaxResults(10) // Récupération de 10 élément maximum
+    //         ->getQuery() // Récupération de la query
+    //         ->getResult() // Récupération du résultat de la query
+    //         ;
+    // }
 
 
     // /**
@@ -127,4 +127,16 @@ class DemandeurRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findAllObjRelativeToDemandeur(Demandeur $demandeur)
+    {
+        $qb = $this->createQueryBuilder('d')
+            ->leftJoin('d.demandes', 'de')
+            ->where('d.person_asking = :demandeur')
+            ->orWhere('de = :demandeur')
+            ->setParameter('demandeur', $demandeur);
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
 }

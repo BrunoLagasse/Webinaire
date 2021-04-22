@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Obj;
+use App\Entity\Statistic;
 use App\Entity\Demande;
 use App\Form\DemandeType;
 use Symfony\Component\Mime\Email;
+use App\Repository\StatisticRepository;
+use App\Repository\DemandeurRepository;
 use Symfony\Component\Mailer\MailerInterface;
 use App\Form\ObjType;
 use App\Repository\ObjRepository;
@@ -29,12 +32,14 @@ class ObjController extends AbstractController
     public function new(Request $request): Response
     {
         $obj = new Obj();
+        $statistic = new Statistic();
         $form = $this->createForm(ObjType::class, $obj);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($obj);
+            $entityManager->persist($statistic);
             $entityManager->flush();
 
             return $this->redirectToRoute('obj_index');
@@ -47,13 +52,20 @@ class ObjController extends AbstractController
     }
 
     #[Route('/{id}', name: 'obj_show', methods: ['GET', 'POST'])]
-    public function show(Obj $obj,Request $request, MailerInterface $mailer): Response
+    public function show(Obj $obj,Request $request, MailerInterface $mailer, DemandeurRepository $demandeurRepository, StatisticRepository $statisticRepository, Statistic $statistic): Response
     {
         $demande = new Demande();
+
         $form = $this->createForm(DemandeType::class, $demande);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $demandeur = $demandeurRepository->findOneBy(["email" => $demande->getPersonAsking()->getEmail()]);
+            if($demandeur != null)
+            {
+                $demandeur->setCompany($demande->getPersonAsking()->getCompany());
+                $demande->setPersonAsking($demandeur);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($demande);
             $entityManager->flush();
@@ -65,13 +77,23 @@ class ObjController extends AbstractController
                 ->html('<p>Une demande vient d\'être effectuée !</p>');
 
             $mailer->send($email);
-            
-             return $this->redirectToRoute('demande_index');
+
+            $this->addFlash('success', 'Votre demande est bien enregistrée!');
+            //  return $this->redirectToRoute('obj_show');
         }
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $vue = $statistic->getVue();
+        $vue = $vue + 1;
+        $statistic->setVue($vue);
+        $entityManager->flush();
+
         return $this->render('obj/show.html.twig', [
             'obj' => $obj,
             'form' => $form->createView(),
             'demande' => $demande,
+            'statistic' => $statistic,
         ]);
     }
 

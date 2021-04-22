@@ -44,9 +44,16 @@ class Obj
      */
     private $demandes;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Statistic::class, mappedBy="objView")
+     */
+    private $statistics;
+
     public function __construct()
     {
         $this->demandes = new ArrayCollection();
+        $this->nbView = new ArrayCollection();
+        $this->statistics = new ArrayCollection();
     }
 
     public function __toString()
@@ -132,6 +139,33 @@ class Obj
             if ($demande->getObjRequested() === $this) {
                 $demande->setObjRequested(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Statistic[]
+     */
+    public function getStatistics(): Collection
+    {
+        return $this->statistics;
+    }
+
+    public function addStatistic(Statistic $statistic): self
+    {
+        if (!$this->statistics->contains($statistic)) {
+            $this->statistics[] = $statistic;
+            $statistic->addObjView($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStatistic(Statistic $statistic): self
+    {
+        if ($this->statistics->removeElement($statistic)) {
+            $statistic->removeObjView($this);
         }
 
         return $this;

@@ -11,7 +11,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=DemandeurRepository::class)
- * @UniqueEntity(fields={"email"})
+ * @UniqueEntity("email")
+ * message="Cette email est déjà utilisé."
  */
 class Demandeur
 {
@@ -33,8 +34,8 @@ class Demandeur
     private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * 
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\Email
      */
     private $email;
 
@@ -53,9 +54,11 @@ class Demandeur
      */
     private $demandes;
 
+
     public function __construct()
     {
         $this->demandes = new ArrayCollection();
+        $this->statistics = new ArrayCollection();
     }
 
     public function __toString()

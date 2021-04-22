@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques{% endblock %}
+
+{% block body %}
+    <h1 class="display-1 text-center fs-2 mt-2">Statistiques</h1>
+    <div class="contenair">
+        <div class="row">
+            <div class="col-2"></div>
+            <table class="col-8 table">
+                <thead>
+                    <tr>
+                        <th>Webinaire</th>
+                        <th>Vue(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for objName in objs %}
+                <tr>
+                    <td>{{ objName.name }}</td> 
+                {% endfor %} 
+                </tr>   
+                {% for statistic in statistics %}
+                <tr>
+                    <td>{{ statistic.vue }}</td> 
+                </tr>
+                {% endfor %}
+                {# {% for statistic in statistics %}
+                <tr>
+                    <td>{{ statistic.objView.name}}</td>
+                    <td>{{ statistic.vue }}</td> 
+                </tr> 
+                {% endfor %} #}
+                </tbody>
+            </table>
+        <div class="col-2"></div>
+    </div>
+</div>
+{% endblock %}

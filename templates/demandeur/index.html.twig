@@ -19,7 +19,6 @@
             </tr>
         </thead>
         <tbody>
-            
         {% for demandeur in demandeurs %}
             <tr>
                 <td>{{ demandeur.id }}</td>
@@ -28,17 +27,16 @@
                 <td>{{ demandeur.email }}</td>
                 <td>{{ demandeur.phoneNumber }}</td>
                 <td>{{ demandeur.company }}</td>
-                {% for demande in demandeur.demandes %}
-                <td>{{ demande.date|date('d-m-Y') }} -
-                {% endfor %} 
-                {% for webinaire in obj_requested %}
-                {{ webinaire.name }}<br></td>
-                {% endfor %}
-
-                <td>
-                    <a href="{{ path('demandeur_show', {'id': demandeur.id}) }}" class="btn btn-primary">Détail</a>
-                    <a href="{{ path('demandeur_edit', {'id': demandeur.id}) }}" class="btn btn-success ml-3">Éditer</a>
-                </td>
+            <br>
+            <td>
+            {% for demande in demandeur.demandes %} 
+                {{ demande.date|date('d-m-Y') ~ " - " ~ demande.objrequested.name }} &nbsp; <a><img class="resend-email-img"alt="Renvoyer l'email" src="{{ asset('build/images/send-message.png') }}"/></a> <br>
+            {% endfor %}
+            </td>
+            <td>
+                <a href="{{ path('demandeur_show', {'id': demandeur.id}) }}" class="btn btn-primary">Détail</a>
+                <a href="{{ path('demandeur_edit', {'id': demandeur.id}) }}" class="btn btn-success ml-3">Éditer</a>
+            </td>
             </tr>
         {% else %}
             <tr>
@@ -48,6 +46,6 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('demandeur_new') }}">Ajouter un nouveau demandeur</a>
+    <a class="btn btn-primary ml-2" href="{{ path('demandeur_new') }}">Ajouter un nouveau demandeur</a>
     
 {% endblock %}
