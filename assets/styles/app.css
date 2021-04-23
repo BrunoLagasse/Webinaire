@@ -2,6 +2,12 @@ body {
     margin: 0;
     padding: 0;
 }
+.rotated-background-image {
+    background: linear-gradient(90deg, #8900db 0, #00d4e7 76%); 
+    padding: 50px 0;
+    overflow: hidden;
+    height: 100%;
+}
 
 /*  flèche retour vers la liste des webinaires */
 .back-arrow{

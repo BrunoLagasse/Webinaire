@@ -1,5 +1,5 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
-<div class="getin_form wow fadeInUp formulaire-content">
+<div class="getin_form wow fadeInUp formulaire-content mt-1">
 {{ form_start(form) }}
     <!-- champs formulaire auto select webinaire id -->
     {{ form_widget(form.obj_requested, {value: obj.id ~ "", class:'hidden-row', label: false }) }} 
