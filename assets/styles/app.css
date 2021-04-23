@@ -35,19 +35,20 @@ body {
 }
 
 /* index demandeur */
+
 .resend-email-img {
-    height: 1.4vh;
+    height: 1.9vh;
     width: auto;
 }
 
 /* Webinaire Index */
 .items{
-    background: #FFFFFF;  
+    background: #FFFFFF;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
-    border-radius: 27px;
-    min-height: 100%;
-    min-width: 100%;
-}
+    border-radius: 32px;
+    /* min-height: 100%;
+    min-width: 100%; */
+} 
 
 /* Webinaire SHOW */
 

@@ -1,47 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des webinaires{% endblock %}
+{% block title %}Webinaires à venir{% endblock %}
 
 {% block body %}
-  {# <h1 class="display-1 text-center fs-2 mt-2" style="margin-bottom:3rem;">Liste des webinaires</h1> #}
-    <div class="container mt-5 mb-4">
-      <div class="row">
-        {% for obj in objs %}
-        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-1">
-              <div class="card mt-5 items">
-                <div class="card-body">
-                  <a href="{{ path('obj_show', {'id': obj.id}) }}">
-                    <img src="{{ asset('build/images/webinaire_placeholder.jpg') }}" class="card-img-top" alt="image-du-webinaire"/>
-                    {# <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="26.8572" y="21.1429" width="41.1429" height="48" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4 44C4 66.08 21.92 84 44 84C66.08 84 84 66.08 84 44C84 21.92 66.08 4 44 4C21.92 4 4 21.92 4 44Z" fill="#2C4B9D" stroke="white" stroke-width="7"/>
-                    <path d="M34.8772 60L60.0201 44L34.8772 28V60Z" fill="white"/>
-                    </svg> #}
-                  </a>
-                  <div class="card-body">
-                    <p class="card-text">{{ obj.summarize }}</p> 
-                    <a href="{{ path('obj_show', {'id': obj.id}) }}"><h5 class="card-title display-9 text-primary font-weight-bold text-center">{{ obj.name }}</h5></a>
-                    {#
-                    <a href="{{path('obj_show', {'id': obj.id}) }}" class="btn btn-primary">Plus de détails</a> #}
-                    {# {% if app.user %}
-                    <a href="{{ path('obj_edit', {'id': obj.id}) }}" class="btn btn-success">Éditer</a>
-                    {% endif %} #}
-                  </div>
+<div class="container mt-5 mb-4">
+  <div class="row">
+    {% for obj in objs %}
+    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-1">
+          <div class="card mt-5 items">
+            <div class="card-body">
+              <a href="{{ path('obj_show', {'id': obj.id}) }}">
+                <h4 class="card-title titre-webiniaire text-warning display-6 font-weight-bold">{{ obj.name }}</h4>
+                  <div  style="display: flex; justify-content: center; align-items: center; position: relative;">
+                  <img src="{{ asset('build/images/webinaire_placeholder.jpg') }}" class="card-img-top" alt="image-du-webinaire"/>
+                  <svg width="88" style="position: absolute;"height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="26.8572" y="21.1429" width="41.1429" height="48" fill="white"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4 44C4 66.08 21.92 84 44 84C66.08 84 84 66.08 84 44C84 21.92 66.08 4 44 4C21.92 4 4 21.92 4 44Z" fill="#2C4B9D" stroke="white" stroke-width="7"/>
+                  <path d="M34.8772 60L60.0201 44L34.8772 28V60Z" fill="white"/>
+                  </svg>
                 </div>
+              </a>
+              <div class="card-body">
+                <p class="card-text">{{ obj.summarize }}</p> 
+                <a href="{{ path('obj_show', {'id': obj.id}) }}"><h5 class="card-title display-9 text-primary font-weight-bold text-center">{{ obj.name }}</h5></a>
               </div>
-        </div>
-        {% else %}
-        </div>
-        <p>
-          Pas de webinaire trouvé...
-        </p>
-        {% endfor %}
-      </div>
+            </div>
+          </div>
     </div>
-    {# <hr> #}
-    {# {% if app.user %}
-    <div class="d-flex justify-content-center">
-        <a class="mb-2 overlink" href="{{ path('obj_new') }}">Ajouter un webinaire</a>
+    {% else %}
     </div>
-    {% endif %} #}
+    <p>
+      Pas de webinaire trouvé...
+    </p>
+    {% endfor %}
+  </div>
+</div>
+{# <hr> #}
+{# {% if app.user %}
+<div class="d-flex justify-content-center">
+    <a class="mb-2 overlink" href="{{ path('obj_new') }}">Ajouter un webinaire</a>
+</div>
+{% endif %} #}
 {% endblock %}

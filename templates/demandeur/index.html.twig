@@ -30,7 +30,7 @@
             <br>
             <td>
             {% for demande in demandeur.demandes %} 
-                {{ demande.date|date('d-m-Y') ~ " - " ~ demande.objrequested.name }} &nbsp; <a><img class="resend-email-img"alt="Renvoyer l'email" src="{{ asset('build/images/send-message.png') }}"/></a> <br>
+                {{ demande.date|date('d-m-Y') ~ " - " ~ demande.objrequested.name }} &nbsp; <a><img class="resend-email-img" alt="Renvoyer l'email" src="{{ asset('build/images/send-message.png') }}"/></a> <br>
             {% endfor %}
             </td>
             <td>
