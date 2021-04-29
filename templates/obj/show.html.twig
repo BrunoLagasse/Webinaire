@@ -36,9 +36,9 @@
     <div class="contenair mt-5">
         <div class="row">
             <div class="col"></div>
-            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4 mr-2 mb-2" style="background: #FFFFFF; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25); border-radius: 27px;">
-                <!-- <img src="{{ asset('build/images/webinaire_placeholder.jpg') }}" class="img-thumbnail" alt="image-du-webinaire"/> -->
-                <iframe class="mt-1" style="border-radius: 27px;" width="560" height="315" src="https://www.youtube.com/embed/r6SQ2brqN20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4 mr-2 mb-2" style="height: 100%; width: 100%; border-radius: 27px;">
+                <iframe class="mt-1 mb-4" style="min-height: 25vh; width: 15vw;border-radius: 27px; filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.25));" width="560" height="315" src="https://www.youtube.com/embed/r6SQ2brqN20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            
             {# début bouton d'administration #}
             {% if app.user %}
             <div class="dropdown pull-right">
@@ -52,11 +52,11 @@
             </div>
             {% endif %}
             {# fin bouton d'administration  #}
-            <div class="card-body">
+            <div class="card-body mt-4">
                 <h5 class="card-title titre-webiniaire text-warning display-6 font-weight-bold">{{ obj.name }}{% embed "statistic/show.html.twig" %}{% endembed %}</h5>
                 <p class="card-text fs-6 text-wrap">{{ obj.summarize }}</p>
             </div>
-            {# <a href="{{ path('obj_index') }}" class="back-to-list btn btn-primary">Retour à la liste</a> #}
+
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2" style="background: #FFFFFF; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25); border-radius: 27px;">

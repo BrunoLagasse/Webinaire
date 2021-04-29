@@ -37,19 +37,6 @@ class DemandeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($demande);
-            // $existingUser = $em->getRepository(Demandeur::class)->findOneBy([
-            //     'email' => $value['email'],
-            // ]);
-            // if($existingUser) {
-            //     $demande->set;
-            //     $entityManager->flush();
-            // } else {
-            //     // créer
-            // }
-
-
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($demande);
             $entityManager->flush();
