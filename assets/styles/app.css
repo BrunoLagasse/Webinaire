@@ -2,67 +2,56 @@ body{
     margin: 0;
     padding: 0;
     background : -webkit-linear-gradient( 0deg, #8702DB 5%, #4B60E0 40.44%, #00D4E7 79.09% );
-
     height:100vh;
     width:100vw;
     z-index: -1;
+    position: relative;
    }
    
    body::before{
-    background: white;
-    content: "";
-    opacity:1;
-    top: 37vh;
-    left: -5vw;
-    bottom: 0;
-    right: 0;
-    height:90vh;
-    width:110vw;
-    transform:rotate(-5deg);
-    position: fixed;
-    z-index: 0;
+        background: white;
+        content: "";
+        opacity: 1;
+        top: 37vh;
+        left: -5vw;
+        bottom: 0;
+        right: 0;
+        height: 90vh;
+        width: 110vw;
+        transform:rotate(-5deg);
+        position: fixed;
+        z-index: 0;
     }
    
    body::after{
-    content: "";
-    width:45vw;
-    height:45vw;
-    border-radius:50%;
-    position: fixed;
-    background: #FFC700;
-    top: 15vh;
-    left: -13vw;
-    filter: blur(48.5342px);
-    transform: matrix(-0.71, -0.71, 0.71, -0.71, 0, 0);
-    z-index: -1;
+        content: "";
+        width:45vw;
+        height:45vw;
+        border-radius:50%;
+        position: fixed;
+        background: #FFC700;
+        top: 15vh;
+        left: -13vw;
+        filter: blur(48.5342px);
+        transform: matrix(-0.71, -0.71, 0.71, -0.71, 0, 0);
+        z-index: -1;
    }
    div#first{
-    width:50vw;
-    background: white;
-    padding:1em;
-    margin:5em auto;
-    font-family:sans-serif;
-    z-index: 1;
-    position: relative;
+        width:50vw;
+        background: white;
+        padding:1em;
+        margin:5em auto;
+        font-family:sans-serif;
+        z-index: 1;
+        position: relative;
    }
    div#first div{
-    margin-top:1em;
+        margin-top:1em;
    }
    .page-header {
         all: unset!important;
         padding: 50px 0 !important;
    }
-
-/* .rotated-background-image {
-    background: linear-gradient(90deg, #8900db 0, #00d4e7 76%); 
-    padding: 50px 0;
-    overflow: hidden;
-    height: 300vh;
-    min-width: 200vw;
-    transform : rotate(-35deg);
-    position: absolute;
-    z-index: -200;
-} */
 
 /*  flèche retour vers la liste des webinaires */
 .back-arrow{
